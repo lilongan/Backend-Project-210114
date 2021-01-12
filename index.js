@@ -46,14 +46,19 @@ app.use(routes)
 
 // app.get("/", (req, res) => {
 //     res.render("home", {
-//       locals: {},
+//       locals: {
+//         title: "home",
+//       },
 //       ...layout,
 //     });
 //   });
 
 //   app.get("/signup", (req, res) => {
 //     res.render("signup", {
-//       locals: {},
+//       locals: {
+//         title: "sign up",
+//         errormsg: ""
+//       },
 //       ...layout,
 //     });
 //   });
