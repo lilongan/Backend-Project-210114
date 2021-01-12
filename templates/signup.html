@@ -1,19 +1,26 @@
-${homeHeader}
+${header}
 <ul class="navbar">
   <li><a href="/">Home</a></li>
   <li><a href="/about">About</a></li>
   <li><a href="/contact">Contact</a></li>
 <h1>${title}</h1>
+<div class="container">
 <form action="" method="post">
     <label for="username">Username:</label>
     <input type="text" name="username" id="username" required>
+    <br>
     <label for="password">Password:</label>
     <input type="password" name="password" id="password" required>
+    <br>
     <label for="country">Country:</label>
     <input type="text" name="country" id="country" required>
+    <br>
     <label for="email">Email:</label>
     <input type="email" name="email" id="email" required>
+    <br>
     <input type="submit" value="Submit">
 </form>
+
 <p>${errormsg}</p>
+</div>
 ${footer}
