@@ -3,7 +3,7 @@ const { layout } = require("../layout")
 const home = (req, res) => {
     res.render("home", {
         locals: {
-            title: "Advocates Asia Home",
+            title: "Asia NGO Home",
             errormsg: ""
         },
         ...layout,
