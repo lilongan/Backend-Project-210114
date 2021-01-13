@@ -12,14 +12,22 @@ const FileStore = require('session-file-store')(session);
 const app = express();
 const server = http.createServer(app);
 
-// const bcrypt = require("bcryptjs");
+
 
 const logger = morgan('tiny');
 const PORT = 5555
 const HOST = '127.0.0.1';
 
-const routes = require("./routers")
-// const { layout } = require("./layout");
+const homeRoutes = require("./routers/home")
+const userRoutes = require("./routers/user")
+
+// stuff we'll probably move with routers/controllers
+// const bcrypt = require("bcryptjs");
+const { User, Comment, Post } = require("./models");
+const UPLOAD_URL = "/uploads/media/";
+const multer = require("multer");
+const upload = multer({ dest: "public" + UPLOAD_URL });
+const { layout } = require("./layout");
 
 app.use(session({
     store: new FileStore(),
@@ -42,77 +50,44 @@ app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
 
-app.use(routes)
+app.use("/", homeRoutes)
+app.use("/user", userRoutes )
 
-// app.get("/", (req, res) => {
-//     res.render("home", {
-//       locals: {
-//         title: "home",
-//       },
-//       ...layout,
-//     });
-//   });
+const requireLogin = (req, res, next) => {
+	if (req.session.user) {
+		next();
+	} else {
+		res.redirect("/login");
+	}
+};
 
-//   app.get("/signup", (req, res) => {
-//     res.render("signup", {
-//       locals: {
-//         title: "sign up",
-//         errormsg: ""
-//       },
-//       ...layout,
-//     });
-//   });
+app.get("/private", requireLogin, async (req, res) => {
+  const { username, id } = req.session.user;
 
-//   app.post("/signup", async (req, res) => {
-//     const { username, password, country, email } = req.body;
-//     const hash = bcrypt.hashSync(password, 10);
-//     try {
-//       const newUser = await User.create({
-//         username,
-//         hash,
-//         country,
-//         email,
-//       });
-//       console.log(newUser);
-  
-//       res.redirect("/login");
-//     } catch (e) {
-//       res.send("username is taken");
-//     }
-//   });
+  console.log(req.session.user);
 
-  // app.get("/login", (req, res) => {
-  //   res.render("login", {
-  //     locals: {},
-  //     ...layout,
-  //   });
-  // });
-  
-  // app.post("/login", async (req, res) => {
-  //   const { username, password } = req.body;
-  
-  //   const user = await User.findOne({
-  //     where: {
-  //       username,
-  //     },
-  //   });
-  //   if (user) {
-  //     const isValid = bcrypt.compareSync(password, user.hash);
-  //     if (isValid) {
-  //       req.session.user = {
-  //         username: user.username,
-  //         id: user.id,
-  //       };
-  //       req.session.save(() => {
-  //         res.redirect("/private");
-  //       });
-  //     } else {
-  //       res.send("Wrong password. Try again.");
-  //     }
-  //   } else {
-  //     res.send("Username not found");
-  //   }
-  // });
+  const posts = await Post.findAll({
+    order: [["createdAt", "desc"]],
+    include: [
+      {
+        model: Comment,
+        attributes: ["content", "createdAt"],
+        include: User,
+      }]
+    });
+  for (let p of posts) {
+    p.User = await User.findByPk(p.userid);
+  }  
+  res.render("private", {
+    locals: {
+      username,
+      posts,
+      id
+    },
+    ...layout,
+  });
+});
+        
 
 server.listen(PORT, HOST, () => {
     console.log('Server running at localhost, port 5555');
