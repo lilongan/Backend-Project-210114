@@ -80,6 +80,7 @@ app.get("/private", requireLogin, async (req, res) => {
   }  
   res.render("private", {
     locals: {
+      title: "ANGO",
       username,
       posts,
       id
@@ -87,7 +88,34 @@ app.get("/private", requireLogin, async (req, res) => {
     ...layout,
   });
 });
-        
+
+app.get("/private/create", requireLogin, (req, res) => {
+  res.render("createPost", {
+    locals: {
+      title: "Make a Post"
+    },
+    ...layout,
+  });
+});
+app.post(
+  "/private/create",
+  requireLogin,
+  upload.single("media"),
+  async (req, res) => {
+    const { id, username } = req.session.user;
+    const { file } = req;
+    const { title, content } = req.body;
+    let mediaPic = file ? UPLOAD_URL + file.filename : "";
+    const post = await Post.create({
+      userid: id,
+      username,
+      title,
+      media: mediaPic,
+      content,
+    });
+    res.redirect("/private");
+  }
+);
 
 server.listen(PORT, HOST, () => {
     console.log('Server running at localhost, port 5555');
