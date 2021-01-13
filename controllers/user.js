@@ -24,7 +24,7 @@ const processSignUp = async (req, res) => {
 			country,
 			email,
 		});
-		res.redirect(`/login`);
+		res.redirect(`/user/login`);
 	} catch (e) {
 		if (e.name === "SequelizeUniqueConstraintError") {
 			res.render("signup", {
