@@ -2,6 +2,42 @@ ${header}
 
 <h1>Welcome ${username}</h1>
 
-<a href="/members/create"><button>ADD POST</button></a>
+<a href="/private/create"><button>ADD POST</button></a>
+
+<ul>
+    ${posts.map(p => { return `
+    <li>
+      <div class="postDiv">
+        <h2>${p.title}</h2>
+        <a href="/private/profile/${p.userid}">
+          <h3>${p.User.username}</h3>
+        </a>
+        <br />
+  
+        <div class="img-holder">
+          ${p.media.includes("/uploads/media/") ? `<img
+            src="${p.media}"
+            alt="${p.User.username}'s image"
+          />`:'' }
+        </div>
+        <p>${p.content}</p>
+  
+        <a href="/post/${p.id}/comment"><button>ADD COMMENT</button></a>
+        <a href="/private/post/${p.id}/edit"><button>EDIT POST</button></a>
+        <a href="/"><button>DELETE POST</button></a>
+        <ul>
+          ${p.Comments ? p.Comments.map(c => `
+          <li data-comment-id="${c.id}">
+           ${c.User ? `<a href="/private/profile/${c.User.id}"
+              >${c.User.username}</a>` : ''}</a
+            >: ${c.content}
+          </li>
+          `).join('') : '' }
+        </ul>
+      </div>
+    </li>
+  
+    ` }).join('')}
+  </ul>
 
 ${footer}
