@@ -71,10 +71,11 @@ app.get("/private", requireLogin, async (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["content", "createdAt"],
+        attributes: ["content", "createdAt", "id"],
         include: User,
       }]
     });
+  console.log(posts[3].Comments)
   for (let p of posts) {
     p.User = await User.findByPk(p.userid);
   }  
@@ -116,6 +117,38 @@ app.post(
     res.redirect("/private");
   }
 );
+
+app.get("/private/profile/:id", requireLogin, async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findByPk(id);
+
+  console.log("Error Before FindAll");
+  const member = await Post.findAll({
+    where: {
+      userid: id,
+    },
+    order: [["createdAt", "desc"]],
+    include: [
+      {
+        model: Comment,
+        attributes: ["content", "createdAt"],
+        include: User,
+      },
+      // {
+      //   model: User,
+      // },
+    ],
+  });
+  console.log(JSON.stringify(member, null, 4));
+  res.render("profile", {
+    locals: {
+      title: "Profile Page",
+      member,
+      user,
+    },
+    ...layout,
+  });
+});
 
 app.get("/post/:id/comment", requireLogin, async (req, res) => {
   const { id } = req.params;
