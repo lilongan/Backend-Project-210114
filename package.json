@@ -1,7 +1,7 @@
 {
   "name": "Backend-Project-210114",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"Many to many\" database relationships using Primary and Foreign Keys",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",

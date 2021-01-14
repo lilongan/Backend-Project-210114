@@ -1,0 +1,25 @@
+${header}
+<ul class="navbar">
+    <li><a href="/private">Home</a></li>
+    <li><a href="/logout">Logout</a></li>
+</ul>
+
+<form method="POST" action="/post/${post.id}/edit" enctype="multipart/form-data">
+    <label >Title 
+        <input type="text" name="title" value="${post.title}">
+    </label>
+    <br>
+    <label >Media
+        <input type="file" name="media">
+    </label> 
+    <br>
+    <label>Content
+        <textarea  rows="4" cols="50" name="content" >${post.content}</textarea>
+    </label> 
+    <br>
+    <input type="submit" value="POST" >
+</form>
+<script>
+    console.log(post.id)
+</script>
+${footer}
