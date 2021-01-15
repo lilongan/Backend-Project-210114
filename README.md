@@ -5,7 +5,7 @@ The goal for this project was to create the initial backend of a capstone full s
 
 <img src ="./public/Img/210114(Readme_Home_Form).jpg" width="900">
 
-The public home page has links to various pages explaining the who, what, and where about the NGO. There is a cookies banner that displays on each page until the user clicks the accept button and then the banner is hidden as long as the cookies are not cleared. There is a donation link that takes the user to a donation page. The language drop down menu allows the user to choose in what language they want the web pages to be displayed.
+The public home page has links to various pages explaining the who, what, and where about the NGO. There is a cookies banner that displays on each page until the user clicks the accept button and then the banner is hidden as long as the cookies are not cleared. There is a donation link that takes the user to a donation page. The language drop down menu allows the user to choose in what language he wants the web pages to be displayed.
 
 <img src ="./public/Img/210114(Readme_Signup_Form).jpg" width="900">
 
