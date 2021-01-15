@@ -311,3 +311,11 @@
     });
     res.redirect("/private");
   });
+
+  // stuff we'll probably move with routers/controllers
+// const bcrypt = require("bcryptjs");
+const { User, Comment, Post } = require("./models");
+const UPLOAD_URL = "/uploads/media/";
+const multer = require("multer");
+const upload = multer({ dest: "public" + UPLOAD_URL });
+const { layout } = require("./layout");

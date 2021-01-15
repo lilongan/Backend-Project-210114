@@ -3,7 +3,7 @@
     <li>
       <div class="postDiv">
         <h2>${p.title}</h2>
-        <a href="/private/profile/${p.userid}">
+        <a href="/private/private/profile/${p.userid}">
           <h3>${user.username}</h3>
         </a>
         <br />
@@ -12,13 +12,13 @@
           <img src="${p.media}"/>
         </div>
         <p>${p.content}</p>
-        <a href="/post/${p.id}/comment"><button>ADD COMMENT</button></a>
-        <a href="/post/${p.id}/edit"><button>EDIT POST</button></a>
-        <a href="/post/${p.id}/delete"><button>DELETE POST</button></a>
+        <a href="/private/post/${p.id}/comment"><button>ADD COMMENT</button></a>
+        <a href="/private/post/${p.id}/edit"><button>EDIT POST</button></a>
+        <a href="/private/post/${p.id}/delete"><button>DELETE POST</button></a>
         <ul>
           ${p.Comments ? p.Comments.map(c => `
           <li data-comment-id="${c.id}">
-           ${c.User ? `<a href="/private/profile/${c.User.id}"
+           ${c.User ? `<a href="/private/private/profile/${c.User.id}"
               >${c.User.username}</a>` : ''}</a
             >: ${c.content}
             <a href="/private/comment/${c.id}/edit"> <button>Edit Comment</button></a>
