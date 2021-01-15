@@ -1,10 +1,11 @@
 # Backend-Project-210114
-"Many to many" database relationships using Primary and Foreign Keys
-The goal for this project was to create the initial backend of a capstone full stack project for a generic international NGO. We selected Asia and designated the NGO as Asian Non-Governmental Organization (ANGO). The frontend was divided into two parts, i.e., a public web page and a private, members only web page.
+"Many to many" database relationships using Primary and Foreign Keys.
+
+The goal for this project was to create the initial backend of a capstone full stack project for a generic international NGO. We selected Asia and designated the NGO as Asian Non-Governmental Organization (ANGO). The frontend was divided into two parts, i.e., a public web area and a private, members only web area.
 
 <img src ="./public/Img/210114(Readme_Home_Form).jpg" width="900">
 
-The public home page has links to various pages explaining who, what, where about the NGO. There is a cookies banner that displays on each page until the user clicks the accept button and then the banner is hidden as long as the cookies are not cleared. There is a donation button that takes the user to a donation page. The language drop down menu allows the user to choose what language they want the web pages to be displayed.
+The public home page has links to various pages explaining the who, what, and where about the NGO. There is a cookies banner that displays on each page until the user clicks the accept button and then the banner is hidden as long as the cookies are not cleared. There is a donation link that takes the user to a donation page. The language drop down menu allows the user to choose in what language they want the web pages to be displayed.
 
 <img src ="./public/Img/210114(Readme_Signup_Form).jpg" width="900">
 
