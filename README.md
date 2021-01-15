@@ -47,3 +47,22 @@ The logged in user can only edit and delete their own primary key posts and comm
 
 <img src ="./public/Img/210114(Readme_Beekeeper_Comments).jpg" width="900">
 
+As for technical requirements on the backend, we used
+
+    Express for our HTTP framework.
+    express-es6-template-engine for our templating.
+    Sequelize to create Models and Migrations
+    PostgreSQL for our database, and
+        ElephantSQL while developing our app
+        [we did not deploy to AWS, or install PostgreSQL on AWS]
+    Created at least 3 tables (Models) for our signup, login, and chat
+        Made sure that at least 2 of the tables in chat are related (via foreign keys)
+    Stored our static files in the 'public' folder
+    Allowed for user login, with passwords encrypted with bcryptjs.
+
+As for workflow requirements,
+
+    Our group size was 3
+    We created a GitHub repo (added all group members as collaborators)
+    We collaborated using PRs (Pull Requests)
+    We used a feature tracking system, such as Github's Project board.
