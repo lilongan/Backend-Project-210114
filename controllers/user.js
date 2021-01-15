@@ -62,7 +62,7 @@ const processLogin = async (req, res) => {
 			id: user.id,
 		};
 		req.session.save(() => {
-			res.redirect("/private");
+			res.redirect("/private/chat");
 		});
 	} else {
 		res.render("login", {
@@ -79,13 +79,13 @@ const requireLogin = (req, res, next) => {
 	if (req.session.user) {
 		next();
 	} else {
-		res.redirect("/login");
+		res.redirect("/user/login");
 	}
 };
 
 const logout = (req, res) => {
 	req.session.destroy(() => {
-		res.redirect("/login");
+		res.redirect("/user/login");
 	});
 };
 

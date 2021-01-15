@@ -2,14 +2,14 @@ ${header}
 
 <h1>Welcome ${username}</h1>
 
-<a href="/private/create"><button>ADD POST</button></a>
+<a href="/private/chat/create"><button>ADD POST</button></a>
 
 <ul>
     ${posts.map(p => { return `
     <li>
       <div class="postDiv">
         <h2>${p.title}</h2>
-        <a href="/private/profile/${p.userid}">
+        <a href="/private/chat/profile/${p.userid}">
           <h3>${p.User.username}</h3>
         </a>
         <br />
@@ -22,15 +22,15 @@ ${header}
         </div>
         <p>${p.content}</p>
   
-        <a href="/post/${p.id}/comment"><button>ADD COMMENT</button></a>
-        <a href="/post/${p.id}/edit"><button>EDIT POST</button></a>
-        <a href="/post/${p.id}/delete"><button>DELETE POST</button></a>
+        <a href="/private/post/${p.id}/comment"><button>ADD COMMENT</button></a>
+        <a href="/private/post/${p.id}/edit"><button>EDIT POST</button></a>
+        <a href="/private/post/${p.id}/delete"><button>DELETE POST</button></a>
         <ul>
           ${p.Comments ? p.Comments.map(c => `
           <li data-comment-id="${c.id}">
-            ${c.User ? `<a href="/private/profile/${c.User.id}">${c.User.username}</a>` : ''}: ${c.content}
-            <a href="/comment/${c.id}/edit"> <button>Edit Comment</button></a>
-             <a href="/comment/${c.id}/delete"> <button>Delete Comment</button></a>
+            ${c.User ? `<a href="/private/chat/profile/${c.User.id}">${c.User.username}</a>` : ''}: ${c.content}
+            <a href="/private/comment/${c.id}/edit"> <button>Edit Comment</button></a>
+             <a href="/private/comment/${c.id}/delete"> <button>Delete Comment</button></a>
           </li>
           `).join('') : '' }
         </ul>
