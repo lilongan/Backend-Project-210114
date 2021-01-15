@@ -71,9 +71,6 @@ const profilePage = async (req, res) => {
             attributes: ["content", "createdAt"],
             include: User,
         },
-        // {
-        //   model: User,
-        // },
         ],
     });
     console.log(JSON.stringify(member, null, 4));

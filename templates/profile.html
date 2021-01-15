@@ -3,7 +3,7 @@
     <li>
       <div class="postDiv">
         <h2>${p.title}</h2>
-        <a href="/private/private/profile/${p.userid}">
+        <a href="/private/chat/profile/${p.userid}">
           <h3>${user.username}</h3>
         </a>
         <br />
@@ -18,7 +18,7 @@
         <ul>
           ${p.Comments ? p.Comments.map(c => `
           <li data-comment-id="${c.id}">
-           ${c.User ? `<a href="/private/private/profile/${c.User.id}"
+           ${c.User ? `<a href="/private/chat/profile/${c.User.id}"
               >${c.User.username}</a>` : ''}</a
             >: ${c.content}
             <a href="/private/comment/${c.id}/edit"> <button>Edit Comment</button></a>
