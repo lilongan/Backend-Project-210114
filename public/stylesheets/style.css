@@ -9,17 +9,6 @@
     /* grid-template-rows: 30% 30% 30%; */
 }
 
-h1 {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    color: white;
-    opacity: 85%;
-    font-size: 1.2em;
-    text-shadow: 5px 5px 5px black;
-    transform: translate(-50%, -50%);
-}
-
 /* media responsive limit */
 @media (min-width: 768px) {
     .parent-container {
@@ -54,8 +43,7 @@ h1 {
         background-color: white;
     }
 
-    /* trying to make image smaller when responsive
-    #drink-image {
+    /* trying to make image smaller when responsive image {
           height: auto;
           width: 50%;
           justify-content: center;
